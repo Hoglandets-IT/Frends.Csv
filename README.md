@@ -10,8 +10,7 @@
    - [License](#license)
           
 # Frends.Csv
-FRENDS Tasks to process CSV files.
-Modified to Csv.Create to accept JArray as input.
+FRENDS Tasks to process CSV files, Modified to Csv.Create to accept JArray as input.
 .NET Standard compliant
 
 ## Installing
