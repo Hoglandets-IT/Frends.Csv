@@ -158,6 +158,9 @@ namespace Frends.Csv
                 case CreateInputType.Json:
                     csv = JsonToCsvString(input.Json, config, option);
                     break;
+                case CreateInputType.JArray:
+                    csv = JArrayToCsvString(input.JArrayData, config, option);
+                    break;
             }
             return new CreateResult(csv);
 
@@ -214,6 +217,34 @@ namespace Frends.Csv
                     foreach (var cell in row)
                     {
                         csv.WriteField(cell.Value ?? option.ReplaceNullsWith);
+                    }
+                    csv.NextRecord();
+                }
+                return csvString.ToString();
+            }
+        }
+
+
+        private static string JArrayToCsvString(JArray<JObject> inputData, List<string> inputHeaders, Configuration config, CreateOption option)
+        {
+            using (var csvString = new StringWriter())
+            using (var csv = new CsvWriter(csvString, config))
+            {
+                // Get keys from first object
+                IList<string> keys = inputData[0].Properties().Select(p => p.Name).ToList();
+
+                //Write the header row
+                foreach (var key in keys)
+                {
+                    csv.WriteField(key);
+                }
+                csv.NextRecord();
+
+                foreach (var row in inputData)
+                {
+                    foreach (var key in keys)
+                    {
+                        csv.WriteField(row[key] ?? option.ReplaceNullsWith);
                     }
                     csv.NextRecord();
                 }

@@ -15,7 +15,7 @@ using Formatting = Newtonsoft.Json.Formatting;
 namespace Frends.Csv
 {
 
-    public enum CreateInputType { List, Json }
+    public enum CreateInputType { List, Json, JArray }
 
     public class CreateInput
     {
@@ -44,6 +44,11 @@ namespace Frends.Csv
         [UIHint(nameof(InputType), "", CreateInputType.List)]
         [DisplayFormat(DataFormatString = "Expression")]
         public List<List<object>> Data { get; set; }
+
+
+        [UIHint(nameof(InputType), "", CreateInputType.JArray)]
+        [DisplayFormat(DataFormatString = "Expression")]
+        public JArray<JObject> JArrayData { get; set; }
 
         [DefaultValue("\";\"")]
         public string Delimiter { get; set; }
