@@ -226,13 +226,13 @@ namespace Frends.Csv
         }
 
 
-        private static string JArrayToCsvString(Object<JArray<JObject>> inputData, List<string> inputHeaders, Configuration config, CreateOption option)
+        private static string JArrayToCsvString(JArray inputData, List<string> inputHeaders, Configuration config, CreateOption option)
         {
             using (var csvString = new StringWriter())
             using (var csv = new CsvWriter(csvString, config))
             {
                 // Get keys from first object
-                IList<string> keys = inputData[0].Properties().Select(p => p.Name).ToList();
+                List<string> keys = inputData.First().ToObject<Dictionary<string, string>>().Keys.ToList();
 
                 //Write the header row
                 foreach (var key in keys)
@@ -245,13 +245,12 @@ namespace Frends.Csv
                 {
                     foreach (var key in keys)
                     {
-                        csv.WriteField(row[key] ?? option.ReplaceNullsWith);
+                        csv.WriteField(row[key].ToString() ?? option.ReplaceNullsWith);
                     }
                     csv.NextRecord();
                 }
                 return csvString.ToString();
             }
-        }
-        
+        }        
     }
 }

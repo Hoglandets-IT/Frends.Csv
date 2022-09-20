@@ -48,7 +48,7 @@ namespace Frends.Csv
 
         [UIHint(nameof(InputType), "", CreateInputType.JArray)]
         [DisplayFormat(DataFormatString = "Expression")]
-        public Object<JArray<JObject>> JArrayData { get; set; }
+        public JArray JArrayData { get; set; }
 
         [DefaultValue("\";\"")]
         public string Delimiter { get; set; }
