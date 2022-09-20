@@ -3,7 +3,7 @@
             "TaskMethod": "Frends.HIT.CSV.CSV.Parse"
         },
         {
-            "TaskMethod": "Frends.HIT.CSV.CSV.Parse"
+            "TaskMethod": "Frends.HIT.CSV.CSV.Create"
         }
     ]
 }
