@@ -12,7 +12,7 @@ using Formatting = Newtonsoft.Json.Formatting;
 
 #pragma warning disable 1591
 
-namespace Frends.Csv
+namespace Frends.HIT.CSV
 {
 
     public enum CreateInputType { List, Json, JArray }
