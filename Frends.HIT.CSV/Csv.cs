@@ -226,7 +226,7 @@ namespace Frends.Csv
         }
 
 
-        private static string JArrayToCsvString(JArray inputData, List<string> inputHeaders, Configuration config, CreateOption option)
+        private static string JArrayToCsvString(JArray inputData, Configuration config, CreateOption option)
         {
             using (var csvString = new StringWriter())
             using (var csv = new CsvWriter(csvString, config))
