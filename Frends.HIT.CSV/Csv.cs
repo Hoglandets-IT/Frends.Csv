@@ -7,6 +7,7 @@ using System.Linq;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 #pragma warning disable 1591
 
