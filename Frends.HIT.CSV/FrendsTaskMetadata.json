@@ -1,10 +1,9 @@
 ﻿{
-  "Tasks": [
-    {
-      "TaskMethod": "Frends.Csv.Csv.Parse"
-    },
-    {
-      "TaskMethod": "Frends.Csv.Csv.Create"
-    }
-  ]
+    "Tasks": [{
+            "TaskMethod": "Frends.HIT.CSV.CSV.Parse"
+        },
+        {
+            "TaskMethod": "FFrends.HIT.CSV.CSV.Parse"
+        }
+    ]
 }

@@ -11,9 +11,9 @@ using Newtonsoft.Json.Linq;
 
 #pragma warning disable 1591
 
-namespace Frends.Csv
+namespace Frends.HIT.CSV
 {
-    public class Csv
+    public class CSV
     {
 
 
