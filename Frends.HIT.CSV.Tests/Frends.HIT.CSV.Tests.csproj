@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Frends.Csv\Frends.Csv.csproj" />
+    <ProjectReference Include="..\Frends.HIT.CSV\Frends.HIT.CSV.csproj" />
   </ItemGroup>
 
 </Project>

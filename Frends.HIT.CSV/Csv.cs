@@ -149,6 +149,12 @@ namespace Frends.HIT.CSV
                 // if IgnoreQuotes is false ShouldQuote can't have any implementation otherwise it will overwrite IgnoreQuotes statement ( might turn it on again)
                 config.ShouldQuote = (field, context) => (!option.NeverAddQuotesAroundValues);
             }
+
+            if (option.ForceQuotesAroundValues)
+            {
+                config.ShouldQuote = (field, context) => (option.ForceQuotesAroundValues);
+            }
+
             var csv = string.Empty;
 
             switch (input.InputType)
@@ -171,28 +177,32 @@ namespace Frends.HIT.CSV
         {
 
             using (var csvString = new StringWriter())
-            using (var csv = new CsvWriter(csvString, config))
             {
-                //Write the header row
-                if (config.HasHeaderRecord && inputData.Any())
+                using (var csv = new CsvWriter(csvString, config))
                 {
-                    foreach (var column in inputHeaders)
+                    //Write the header row
+                    if (config.HasHeaderRecord && inputData.Any())
                     {
-                        csv.WriteField(column);
+                        foreach (var column in inputHeaders)
+                        {
+                            csv.WriteField(column);
+                        }
+                        csv.NextRecord();
                     }
-                    csv.NextRecord();
-                }
 
-                foreach (var row in inputData)
-                {
-                    foreach (var cell in row)
+                    foreach (var row in inputData)
                     {
-                        csv.WriteField(cell ?? option.ReplaceNullsWith);
+                        foreach (var cell in row)
+                        {
+                            csv.WriteField(cell ?? option.ReplaceNullsWith);
+                        }
+                        csv.NextRecord();
                     }
-                    csv.NextRecord();
+                    return csvString.ToString();
                 }
-                return csvString.ToString();
             }
+            
+            
         }
 
 
